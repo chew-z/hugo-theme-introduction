@@ -114,7 +114,7 @@
         {{ $momentTimezoneWithData := resources.Get "/vendor/momentjs/moment-timezone-with-data-2012-2022.min.js" }}
         {{ $initMomentjs := resources.Get "/js/initMoment.js" | resources.ExecuteAsTemplate "js/initMoment.tmp.js" . }}
         {{ $bundleMoment := slice $momentjs $momentTimezone $momentTimezoneWithData $initMomentjs | resources.Concat "/js/bundleMoment.js" | fingerprint }}
-        <script src="{{ $bundleMoment.Permalink }}" integrity="{{ $bundleMoment.Data.Integrity }}"></script>
+        <script src="{{ $bundleMoment.Permalink }}" integrity="{{ $bundleMoment.Data.Integrity }}" crossorigin="anonymous"></script>
         {{ end }}
     </body>
 </html>
